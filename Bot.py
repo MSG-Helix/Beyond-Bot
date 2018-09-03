@@ -4,7 +4,10 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import asyncio
+import time
+import os
 
+Client = discord.Client()
 bot = commands.Bot(command_prefix='#')
 
 @bot.event
@@ -137,4 +140,4 @@ async def ServerInfo(ctx):
     await bot.say(embed=embed)
 
 
-bot.run("TOKEN")
+bot.run(os.getenv('TOKEN'))
