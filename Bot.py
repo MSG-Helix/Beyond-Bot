@@ -192,5 +192,29 @@ async def help(ctx):
     embed.set_author(name="Help")
     await bot.send_message(author, embed=embed)
 
+@bot.command(pass_context=True)
+@commands.has_role("OFFICIALS")
+async def Admin_Help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title="Commands", description=" .Kick .Ban .Unban .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed.set_author(name="Help")
+    await bot.send_message(author, embed=embed)
+
+@bot.command(pass_context=True)
+@commands.has_role("OFFICIALS")
+async def Admin_help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title="Commands", description=" .Kick .Ban .Unban .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed.set_author(name="Help")
+    await bot.send_message(author, embed=embed)
+
+@bot.command(pass_context=True)
+@commands.has_role("OFFICIALS")
+async def admin_help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title="Commands", description=" .Kick .Ban .Unban .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed.set_author(name="Help")
+    await bot.send_message(author, embed=embed)
+
 
 bot.run(os.getenv('TOKEN'))
