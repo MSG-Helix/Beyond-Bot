@@ -110,23 +110,21 @@ async def GO_BEYOND(ctx):
     print ("GO BEYOND, PLUS ULTRA!!!")
 
 @bot.command(pass_context=True)
-async def News(ctx, user: discord.Member):
-    embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra. https://docs.google.com/document/d/1vrupa6aDr6I_G0UCwEq3H8LIbjZTdoLd6DBDk9e4Tcw/edit?usp=sharing", color=0x00ff00)
-    embed.set_footer(text="By Loki")
-    embed.set_author(name="New Character")
-    await bot.say(embed=embed)
-    print ("News has been requested by {}".format(user.name))
-
-@bot.command(pass_context=True)
-async def news(ctx, user: discord.Member):
+async def News(ctx):
     embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra.", color=0x00ff00)
     embed.set_footer(text="By Loki")
     embed.set_author(name="New Character")
     await bot.say(embed=embed)
-    print ("News has been requested by {}".format(user.name))
 
 @bot.command(pass_context=True)
-async def serverinfo(ctx, user: discord.Member):
+async def news(ctx):
+    embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra.", color=0x00ff00)
+    embed.set_footer(text="By Loki")
+    embed.set_author(name="New Character")
+    await bot.say(embed=embed)
+
+@bot.command(pass_context=True)
+async def serverinfo(ctx):
     embed = discord.Embed(name="{}'s info".format(ctx.message.server.name), description="Here's what I could find.", color=0x00ff00)
     embed.set_author(name="Server information")
     embed.add_field(name="Name", value=ctx.message.server.name, inline=True)
@@ -135,10 +133,9 @@ async def serverinfo(ctx, user: discord.Member):
     embed.add_field(name="Members", value=len(ctx.message.server.members))
     embed.set_thumbnail(url=ctx.message.server.icon_url)
     await bot.say(embed=embed)
-    print ("Server info has been requested by {}".format(user.name))
 
 @bot.command(pass_context=True)
-async def Serverinfo(ctx, user: discord.Member):
+async def Serverinfo(ctx):
     embed = discord.Embed(name="{}'s info".format(ctx.message.server.name), description="Here's what I could find.", color=0x00ff00)
     embed.set_author(name="Server information")
     embed.add_field(name="Name", value=ctx.message.server.name, inline=True)
@@ -147,10 +144,9 @@ async def Serverinfo(ctx, user: discord.Member):
     embed.add_field(name="Members", value=len(ctx.message.server.members))
     embed.set_thumbnail(url=ctx.message.server.icon_url)
     await bot.say(embed=embed)
-    print ("Server info has been requested by {}".format(user.name))
 
 @bot.command(pass_context=True)
-async def ServerInfo(ctx, user: discord.Member):
+async def ServerInfo(ctx):
     embed = discord.Embed(name="{}'s info".format(ctx.message.server.name), description="Here's what I could find.", color=0x00ff00)
     embed.set_author(name="Server information")
     embed.add_field(name="Name", value=ctx.message.server.name, inline=True)
@@ -159,10 +155,9 @@ async def ServerInfo(ctx, user: discord.Member):
     embed.add_field(name="Members", value=len(ctx.message.server.members))
     embed.set_thumbnail(url=ctx.message.server.icon_url)
     await bot.say(embed=embed)
-    print ("Server info has been requested by {}".format(user.name))
 
 @bot.command(pass_context=True)
-async def Clear(ctx, user: discord.Member, amount=10):
+async def Clear(ctx, amount=10):
     channel = ctx.message.channel
     messages = []
     async for message in bot.logs_from(channel, limit=int(amount) + 1):
@@ -170,33 +165,30 @@ async def Clear(ctx, user: discord.Member, amount=10):
     await bot.delete_messages(messages)
     await bot.say("Messages deleted.")
     print ("Messages deleted in {}".format(ctx.message.channel))
-    print ("By {}".format(user.name))
-
-@bot.command(pass_context=True)
-async def clear(ctx, user: discord.Member, amount=10):
-    channel = ctx.message.channel
-    messages = []
-    async for message in bot.logs_from(channel, limit=int(amount) + 1):
-        messages.append(message)
-    await bot.delete_messages(messages)
-    await bot.say("Messages deleted.")
-    print ("Messages deleted in {}".format(ctx.message.channel))
-    print ("By {}".format(user.name))
-
-@bot.command(pass_context=True)
-async def Help(ctx, user: discord.Member):
-    author = ctx.message.author
-    embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
-    embed.set_author(name="Help")
-    await bot.send_message(author, embed=embed)
-    print ("Help has been sent to {}".format(user.name))
-
-@bot.command(pass_context=True)
-async def help(ctx, user: discord.Member):
-    author = ctx.message.author
-    embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
-    embed.set_author(name="Help")
-    await bot.send_message(author, embed=embed)
-    print ("Help has been sent to {}".format(user.name))
     
+@bot.command(pass_context=True)
+async def clear(ctx, amount=10):
+    channel = ctx.message.channel
+    messages = []
+    async for message in bot.logs_from(channel, limit=int(amount) + 1):
+        messages.append(message)
+    await bot.delete_messages(messages)
+    await bot.say("Messages deleted.")
+    print ("Messages deleted in {}".format(ctx.message.channel))
+
+@bot.command(pass_context=True)
+async def Help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed.set_author(name="Help")
+    await bot.send_message(author, embed=embed)
+
+@bot.command(pass_context=True)
+async def help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed.set_author(name="Help")
+    await bot.send_message(author, embed=embed)
+
+
 bot.run(os.getenv('TOKEN'))
