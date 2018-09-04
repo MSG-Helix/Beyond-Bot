@@ -12,7 +12,8 @@ bot = commands.Bot(command_prefix='#')
 
 @bot.event
 async def on_ready():
-    print ("Ready when you are XD")
+    await bot.change_presence(game=discord.Game(name="with commands"))
+    print ("Ready when you are.")
     print ("I am running on " + bot.user.name)
     print ("With the ID: " + bot.user.id)
 
@@ -63,36 +64,42 @@ async def info(ctx, user: discord.Member):
 async def Kick(ctx, user: discord.Member):
     await bot.say("I do apollogize, its just orders {}.".format(user.name))
     await bot.kick(user)
+    print ("{} has been kicked.".format(user.name))
 
 @bot.command(pass_context=True)
 @commands.has_role("OFFICIALS")
 async def kick(ctx, user: discord.Member):
     await bot.say("I do apollogize, its just orders {}.".format(user.name))
     await bot.kick(user)
+    print ("{} has been kicked.".format(user.name))
 
 @bot.command(pass_context=True)
 @commands.has_role("OFFICIALS")
 async def Ban(ctx, user: discord.Member):
     await bot.say("Sorry but you have been let go {}.".format(user.name))
     await bot.ban(user)
+    print ("{} has been banned.".format(user.name))
 
 @bot.command(pass_context=True)
 @commands.has_role("OFFICIALS")
 async def ban(ctx, user: discord.Member):
     await bot.say("Sorry but you have been let go {}.".format(user.name))
     await bot.ban(user)
+    print ("{} has been banned.".format(user.name))
 
 @bot.command(pass_context=True)
 @commands.has_role("OFFICIALS")
 async def Unban(ctx, user: discord.Member):
     await bot.say("Welcome back {}!".format(user.name))
     await bot.unban
+    print ("{} has been unbanned.".format(user.name))
 
 @bot.command(pass_context=True)
 @commands.has_role("OFFICIALS")
 async def unban(ctx, user: discord.Member):
     await bot.say("Welcome back {}!".format(user.name))
     await bot.unban
+    print ("{} has been unbanned.".format(user.name))
 
 @bot.command(pass_context=True)
 async def GO_BEYOND(ctx):
@@ -101,6 +108,13 @@ async def GO_BEYOND(ctx):
 
 @bot.command(pass_context=True)
 async def News(ctx):
+    embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra.", color=0x00ff00)
+    embed.set_footer(text="By Loki")
+    embed.set_author(name="New Character")
+    await bot.say(embed=embed)
+
+@bot.command(pass_context=True)
+async def news(ctx):
     embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra.", color=0x00ff00)
     embed.set_footer(text="By Loki")
     embed.set_author(name="New Character")
@@ -138,6 +152,16 @@ async def ServerInfo(ctx):
     embed.add_field(name="Members", value=len(ctx.message.server.members))
     embed.set_thumbnail(url=ctx.message.server.icon_url)
     await bot.say(embed=embed)
+
+@bot.command(pass_context=True)
+async def clear(ctx, amount=10):
+    channel = ctx.message.channel
+    messages = []
+    async for message in bot.logs_from(channel, limit=int(amount) + 1):
+        messages.append(message)
+    await bot.delete_messages(messages)
+    await bot.say("Messages deleted.")
+    print ("Messages deleted in {}".format(ctx.message.channel))
 
 
 bot.run(os.getenv('TOKEN'))
