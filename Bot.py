@@ -6,9 +6,11 @@ from discord.ext.commands import Bot
 import asyncio
 import time
 import os
+from itertools import cycle
+
 
 Client = discord.Client()
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='.')
 bot.remove_command("help")
 
 @bot.event
