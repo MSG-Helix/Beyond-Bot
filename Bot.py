@@ -163,4 +163,11 @@ async def clear(ctx, amount=10):
     await bot.say("Messages deleted.")
     print ("Messages deleted in {}".format(ctx.message.channel))
 
+    @bot.command(pass_context=True)
+async def Help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed.set_author(name="Help")
+    await bot.send_message(author, embed=embed)
+    
 bot.run(os.getenv('TOKEN'))
