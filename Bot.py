@@ -157,6 +157,7 @@ async def ServerInfo(ctx):
     await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
+@commands.has_role("OFFICIALS")
 async def Clear(ctx, amount=10):
     channel = ctx.message.channel
     messages = []
@@ -167,6 +168,7 @@ async def Clear(ctx, amount=10):
     print ("Messages deleted in {}".format(ctx.message.channel))
     
 @bot.command(pass_context=True)
+@commands.has_role("OFFICIALS")
 async def clear(ctx, amount=10):
     channel = ctx.message.channel
     messages = []
