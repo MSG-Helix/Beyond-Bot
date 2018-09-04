@@ -8,7 +8,7 @@ import time
 import os
 
 Client = discord.Client()
-bot = commands.Bot(command_prefix='#')
+bot = commands.Bot(command_prefix='.')
 
 @bot.event
 async def on_ready():
