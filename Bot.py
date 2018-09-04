@@ -6,13 +6,16 @@ from discord.ext.commands import Bot
 import asyncio
 import time
 import os
+from itertools import cycle
+
 
 Client = discord.Client()
-bot = commands.Bot(command_prefix='#')
+bot = commands.Bot(command_prefix='.')
+bot.remove_command("help")
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="Hero Academia: Beyond"))
+    await bot.change_presence(game=discord.Game(name="with commands"))
     print ("Ready when you are.")
     print ("I am running on " + bot.user.name)
     print ("With the ID: " + bot.user.id)
@@ -108,7 +111,7 @@ async def GO_BEYOND(ctx):
 
 @bot.command(pass_context=True)
 async def News(ctx):
-    embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra.", color=0x00ff00)
+    embed = discord.Embed(title="Holy Mantra", description=" One of the main things I do for the game is create original characters for the Story Mode, and write those characters stories. I have been working with a few artists in the Helping Hand to draw these characters, and give them more life. So, thanks to @ILOforma, I can show sketches she has made for one of my pro heroes. A Buddhist monk living in peace with his mind; kind and gentle, yet hard as steel when called for. Here is the Enlightened Hero; Holy Mantra. https://docs.google.com/document/d/1vrupa6aDr6I_G0UCwEq3H8LIbjZTdoLd6DBDk9e4Tcw/edit?usp=sharing", color=0x00ff00)
     embed.set_footer(text="By Loki")
     embed.set_author(name="New Character")
     await bot.say(embed=embed)
@@ -163,7 +166,7 @@ async def clear(ctx, amount=10):
     await bot.say("Messages deleted.")
     print ("Messages deleted in {}".format(ctx.message.channel))
 
-    @bot.command(pass_context=True)
+@bot.command(pass_context=True)
 async def Help(ctx):
     author = ctx.message.author
     embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
