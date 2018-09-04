@@ -15,7 +15,7 @@ bot.remove_command("help")
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="with commands"))
+    await bot.change_presence(game=discord.Game(name="Hero Academia: Beyond"))
     print ("Ready when you are.")
     print ("I am running on " + bot.user.name)
     print ("With the ID: " + bot.user.id)
@@ -169,7 +169,7 @@ async def clear(ctx, amount=10):
 @bot.command(pass_context=True)
 async def Help(ctx):
     author = ctx.message.author
-    embed = discord.Embed(title="Commands", description=" .GO_BEYOND .Ping .Pong .Info [User] .Serverinfo .News", color=0x00ff00)
+    embed = discord.Embed(title="Commands", description=" !GO_BEYOND !Ping !Pong !Info [User] !Serverinfo !News", color=0x00ff00)
     embed.set_author(name="Help")
     await bot.send_message(author, embed=embed)
     
